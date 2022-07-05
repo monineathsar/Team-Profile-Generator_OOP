@@ -1,81 +1,15 @@
 
-const Manager = require("./lib/ManagerClass.js");
-const Engineer = require("./lib/EngineerClass.js");
-const Intern = require("./lib/InterClass.js");
+const { Manager, managerQuestionsArr } = require("./lib/ManagerClass.js");
+const { Engineer, engineerQuestionsArr } = require("./lib/EngineerClass.js");
+const { Intern, internQuestionsArr } = require("./lib/InterClass.js");
 
-const inquirer = require("inquire");
+const inquirer = require("inquirer");
+// const writeFile = require("./src/teamProfiles")
 const fs = require("fs");
+const writeFile = require("./src/writeFileInquirer")
 
-teamArr = [];
-
-const managerQuestionsArr = [
-    {
-        type: "input",
-        name: "name",
-        message: "What is the manager's name?"
-    },
-    {
-        type: "input",
-        name: "ID",
-        message: "What is the manager's ID?"
-    },
-    {
-        type: "input",
-        name: "email",
-        message: "What is the manager's email?"
-    },
-    {
-        type: "input",
-        name: "officeNumber",
-        message: "What is the manager's office number?"
-    }
-]
-
-const engineerQuestionsArr = [
-    {
-        type: "input",
-        name: "name",
-        message: "What is the engineer's name?"
-    },
-    {
-        type: "input",
-        name: "ID",
-        message: "What is the engineer's ID?"
-    },
-    {
-        type: "input",
-        name: "email",
-        message: "What is the engineer's email?"
-    },
-    {
-        type: "input",
-        name: "github",
-        message: "What is the engineer's GitHub username?"
-    }
-]    
-const internQuestionsArr = [
-    {
-        type: "input",
-        name: "name",
-        message: "What is the intern's name?"
-    },
-    {
-        type: "input",
-        name: "ID",
-        message: "What is the intern's ID?"
-    },
-    {
-        type: "input",
-        name: "email",
-        message: "What is the intern's email?"
-    },
-    {
-        type: "input",
-        name: "school",
-        message: "What is the intern's school?"
-    }
-]  
-
+const teamArr = [];
+ 
 const employeeQuestionsArr = [
     {
         type: "list",
@@ -85,4 +19,53 @@ const employeeQuestionsArr = [
     }
 ]
 
+async function init() { 
+    managerQuestions() 
+    const userInput = await inquirer.prompt(employeeQuestionsArr);
+    const html = generateHtml(userInput);
 
+    await writeFileAsync("teamProfile.html", hmtl);
+}
+
+const managerQuestions = () => {
+    inquirer.prompt(managerQuestionsArr)
+    .then(answers => {
+        answers = new Manager(answers.name, answers.id, answers.email, answers.officeNumber)
+        teamArr.push(answers);
+        return employeePrompt();
+    })
+}
+
+const employeePrompt = () => {
+    inquirer.prompt(employeeQuestionsArr)
+    .then(answer => {
+        if (answer.typeOfEmployee === "Engineer") 
+            {engineerQuestions()};
+        if (answer.typeOfEmployee === "Intern") 
+            {internQuestions()};
+        if (answer.typeOfEmployee === "None, I'm finished buidling my team.") 
+            {
+            let html = 
+            writeFile(html)};
+    })
+}
+
+const engineerQuestions = () => {
+    inquirer.prompt(engineerQuestionsArr)
+    .then(answers => {
+        answers = new Engineer(answers.name, answers.id, answers.email, answers.github)
+        employeesArr.push(answers);
+        return employeePrompt();
+    })
+}
+
+const internQuestions = () => {
+    inquirer.prompt(internQuestionsArr)
+    .then(answers => {
+        answers = new Intern(answers.name, answers.id, answers.email, answers.school)
+        employeesArr.push(answers);
+        return employeePrompt();
+    })
+}
+
+init();

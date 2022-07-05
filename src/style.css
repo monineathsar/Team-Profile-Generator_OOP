@@ -1,0 +1,33 @@
+h1 {
+    display: block;
+    text-align: center;
+}
+
+.profileBox {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-flow: row wrap;
+}
+
+.profileCard {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    min-width: 160px;
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+ul li {
+    line-height: 25px;
+    list-style: none;
+}
+
+.cardHeader {
+    text-align: center;
+}
