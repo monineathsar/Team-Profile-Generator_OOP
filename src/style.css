@@ -14,7 +14,9 @@ h1 {
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
-    min-width: 160px;
+    min-width: 360px;
+    background-color: lightskyblue;
+    opacity: 80%;
 }
 
 .list {
