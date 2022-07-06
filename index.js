@@ -10,22 +10,8 @@ const writeFile = require("./src/writeFileInquirer");
 const template = require("./src/teamProfile");
 
 const teamArr = [];
- 
-const employeeQuestionsArr = [
-    {
-        type: "list",
-        name: "typeOfEmployee",
-        message: "What type of employee would you like to add to your team profile?",
-        choices: ["Engineer", "Intern", "None, I'm finished buidling my team."]
-    }
-]
 
-async function init() { 
-    managerQuestions() 
-    const html = generateHtml(userInput);
-
-    await writeFileAsync("teamProfile.html", hmtl);
-}
+const init = () => {managerQuestions()}
 
 const managerQuestions = () => {
     inquirer.prompt(managerQuestionsArr)
@@ -67,8 +53,7 @@ const employeePrompt = () => {
         if (answer.typeOfEmployee === "Intern") 
             {internQuestions()};
         if (answer.typeOfEmployee === "None, I'm finished buidling my team.") 
-            {
-            let html = template(employeesArr)
+            {let html = template(employeesArr)
             writeFile(html)};
     })
 }
