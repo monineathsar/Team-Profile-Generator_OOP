@@ -2,7 +2,9 @@ h1 {
     display: block;
     text-align: center;
 }
-
+h3 {
+    color: darkslategrey;
+}
 .profileBox {
     display: flex;
     justify-content: space-evenly;
@@ -17,17 +19,20 @@ h1 {
     min-width: 360px;
     background-color: lightskyblue;
     opacity: 80%;
+    border: 2px solid black;
 }
 
 .list {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    background-color: white;
 }
 
 ul li {
     line-height: 25px;
     list-style: none;
+    text-decoration: none;
 }
 
 .cardHeader {

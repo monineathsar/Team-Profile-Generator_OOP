@@ -1,5 +1,7 @@
-const managerHtmlSection = managerInput => {
-    return `
+const teamProfileDiv = buildTeam => {
+
+    const managerHtmlSection = managerInput => {
+        return `
     <section class="profileCard">
         <div class="cardHeader">
             <h2>${managerInput.getName()}</h2>
@@ -13,16 +15,15 @@ const managerHtmlSection = managerInput => {
                 <li>Office Number: ${managerInput.getOfficeNumber()}</li>
             </ul>
         </div>
-    </section>
-    `
-}
+    </section>`;
+    };
 
-const engineerHtmlSection = engineerInput => {
-    return `
+    const engineerHtmlSection = engineerInput => {
+        return `
     <section class="profileCard">
         <div class="cardHeader">
             <h2>${engineerInput.getName()}</h2>
-            <h3>${engineerInput.getROle()}</h3>
+            <h3>${engineerInput.getRole()}</h3>
         </div>
         <div class="list">
              <ul>
@@ -30,16 +31,15 @@ const engineerHtmlSection = engineerInput => {
                 <li>Email: <a href="mailto:${engineerInput.getEmail()}">${engineerInput.getEmail()}</a>
                 </li>
                 <li>GitHub: 
-                <a href="https://github.com/${engineerInput.getGitHub()}" target="www.github.com/${engineerInput.getGitHub()}"</a>
+                <a href="https://github.com/${engineerInput.getGitHub()}" target="www.github.com/${engineerInput.getGitHub()}"></a>
                 </li>
             </ul>
         </div>
-    </section>
-    `
-}
+    </section>`;
+    };
 
-const internHtmlSection = internInput => {
-    return `
+    const internHtmlSection = internInput => {
+        return `
     <section class="profileCard">
         <div class="cardHeader">
             <h2>${internInput.getName()}</h2>
@@ -53,25 +53,41 @@ const internHtmlSection = internInput => {
                 <li>School: ${internInput.getSchool()}</li>
             </ul>
         </div>
-        </section>`
+        </section>`;
+    };
+
+    const writeHtml = [];
+
+    writeHtml.push(buildTeam
+        .filter(employee => employee.getRole() === "Manager")
+        .map(managerInput => managerHtmlSection(managerInput))
+    );
+    writeHtml.push(buildTeam
+        .filter(employee => employee.getRole() === "Engineer")
+        .map(engineerInput => engineerHtmlSection(engineerInput))
+    );
+    writeHtml.push(buildTeam
+        .filter(employee => employee.getRole() === "Intern")
+        .map(internInput => internHtmlSection(internInput))
+    );
+    return writeHtml.join("");
 }
 
-const teamProfileDiv = teamArr => {
-    let teamProfileHtml = ""
-    for ( i = 0; i , teamArr.length; i++ ) {
-        if (teamArr[i].getRole() === "Manager") {
-            teamProfileHtml = teamProfileHtml + managerHtmlSection(teamArr[i])
-        }
-        if (teamArr[i].getRole() === "Engineer"){
-            teamProfileHtml = teamProfileHtml + engineerHtmlSection(teamArr[i])
-          }
-        if (teamArr[i].getRole() === "Intern"){
-            teamProfileHtml = teamProfileHtml + internHtmlSection(teamArr[i])
-          }
-    } return teamProfileHtml
-}
-
-const starterHtml = data => {
+// const teamProfileDiv = teamArr => {
+//     let teamProfileHtml = ""
+//     for ( i = 0; i , teamArr.length; i++ ) {
+//         if (teamArr[i].typeOfEmployee === "Manager") {
+//             teamProfileHtml = teamProfileHtml + managerHtmlSection(teamArr[i])
+//         }
+//         if (teamArr[i].typeOfEmployee === "Engineer") {
+//             teamProfileHtml = teamProfileHtml + engineerHtmlSection(teamArr[i])
+//           }
+//         if (teamArr[i].typeOfEmployee === "Intern") {
+//             teamProfileHtml = teamProfileHtml + internHtmlSection(teamArr[i])
+//           }
+//     } return teamProfileHtml
+// }
+module.exports = buildTeam => {
     return `
     <!DOCTYPE html>
     <html lang="en">
@@ -80,19 +96,17 @@ const starterHtml = data => {
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="../src/style.css">
         <title>Team Profile</title>
     </head>
 
     <body>
         <h1>My Team</h1>
         <div class="profileBox">
-        ${teamProfileDiv(data)}
+        ${teamProfileDiv(buildTeam)}
         </div>
     </body>
         
     </html>
     `
-}
-
-module.exports = starterHtml;
+};

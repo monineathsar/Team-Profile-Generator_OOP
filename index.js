@@ -4,10 +4,8 @@ const { Engineer, engineerQuestionsArr } = require("./lib/EngineerClass.js");
 const { Intern, internQuestionsArr } = require("./lib/InterClass.js");
 
 const inquirer = require("inquirer");
-// const writeFile = require("./src/teamProfiles")
-const fs = require("fs");
 const writeFile = require("./src/writeFileInquirer");
-const template = require("./src/teamProfile");
+const template = require("./src/template");
 
 const teamArr = [];
 
@@ -16,8 +14,8 @@ const init = () => {managerQuestions()}
 const managerQuestions = () => {
     inquirer.prompt(managerQuestionsArr)
     .then(answers => {
-        answers = new Manager(answers.name, answers.id, answers.email, answers.officeNumber)
-        teamArr.push(answers);
+        const manager = new Manager(answers.name, answers.id, answers.email, answers.officeNumber)
+        teamArr.push(manager);
         return employeePrompt();
     })
 }
@@ -25,8 +23,8 @@ const managerQuestions = () => {
 const engineerQuestions = () => {
     inquirer.prompt(engineerQuestionsArr)
     .then(answers => {
-        answers = new Engineer(answers.name, answers.id, answers.email, answers.github)
-        employeesArr.push(answers);
+        const engineer = new Engineer(answers.name, answers.id, answers.email, answers.github)
+        teamArr.push(engineer);
         return employeePrompt();
     })
 }
@@ -34,8 +32,8 @@ const engineerQuestions = () => {
 const internQuestions = () => {
     inquirer.prompt(internQuestionsArr)
     .then(answers => {
-        answers = new Intern(answers.name, answers.id, answers.email, answers.school)
-        employeesArr.push(answers);
+        const intern = new Intern(answers.name, answers.id, answers.email, answers.school)
+        teamArr.push(intern);
         return employeePrompt();
     })
 }
@@ -48,12 +46,13 @@ const employeePrompt = () => {
         choices: ["Engineer", "Intern", "None, I'm finished buidling my team."]
     }])
     .then(answer => {
+        let typeOfEmployee = "";
         if (answer.typeOfEmployee === "Engineer") 
             {engineerQuestions()};
         if (answer.typeOfEmployee === "Intern") 
             {internQuestions()};
         if (answer.typeOfEmployee === "None, I'm finished buidling my team.") 
-            {let html = template(employeesArr)
+            {let html = template(teamArr)
             writeFile(html)};
     })
 }
