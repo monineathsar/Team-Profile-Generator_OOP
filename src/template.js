@@ -73,20 +73,6 @@ const teamProfileDiv = buildTeam => {
     return writeHtml.join("");
 }
 
-// const teamProfileDiv = teamArr => {
-//     let teamProfileHtml = ""
-//     for ( i = 0; i , teamArr.length; i++ ) {
-//         if (teamArr[i].typeOfEmployee === "Manager") {
-//             teamProfileHtml = teamProfileHtml + managerHtmlSection(teamArr[i])
-//         }
-//         if (teamArr[i].typeOfEmployee === "Engineer") {
-//             teamProfileHtml = teamProfileHtml + engineerHtmlSection(teamArr[i])
-//           }
-//         if (teamArr[i].typeOfEmployee === "Intern") {
-//             teamProfileHtml = teamProfileHtml + internHtmlSection(teamArr[i])
-//           }
-//     } return teamProfileHtml
-// }
 module.exports = buildTeam => {
     return `
     <!DOCTYPE html>
