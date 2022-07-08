@@ -10,7 +10,7 @@ const teamProfileDiv = buildTeam => {
         <div class="list">
             <ul>
                 <li>ID: ${managerInput.getId()}</li>
-                <li>Email: <a href="mailto:${managerInput.getEmail()}">${managerInput.getEmail()}</a>
+                <li>Email: <a href="mailto:${managerInput.getEmail()}" style="text-decoration:none">${managerInput.getEmail()}</a>
                 </li>
                 <li>Office Number: ${managerInput.getOfficeNumber()}</li>
             </ul>
@@ -28,10 +28,10 @@ const teamProfileDiv = buildTeam => {
         <div class="list">
              <ul>
                 <li>ID: ${engineerInput.getId()}</li>
-                <li>Email: <a href="mailto:${engineerInput.getEmail()}">${engineerInput.getEmail()}</a>
+                <li>Email: <a href="mailto:${engineerInput.getEmail()}" style="text-decoration:none">${engineerInput.getEmail()}</a>
                 </li>
                 <li>GitHub: 
-                <a href="https://github.com/${engineerInput.getGitHub()}" target="www.github.com/${engineerInput.getGitHub()}"></a>
+                <a href="https://github.com/${engineerInput.getGitHub()}" target="_blank" style="text-decoration:none">github.com/${engineerInput.getGitHub()}</a>
                 </li>
             </ul>
         </div>
@@ -48,7 +48,7 @@ const teamProfileDiv = buildTeam => {
         <div class="list">
             <ul>
                 <li>ID: ${internInput.getId()}</li>
-                <li>Email: <a href="mailto:${internInput.getEmail()}">${internInput.getEmail()}</a>
+                <li>Email: <a href="mailto:${internInput.getEmail()}" style="text-decoration:none">${internInput.getEmail()}</a>
                 </li>
                 <li>School: ${internInput.getSchool()}</li>
             </ul>

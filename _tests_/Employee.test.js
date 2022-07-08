@@ -22,5 +22,4 @@ describe("Employee", () => {
         expect(employee.getEmail()).toBe(employee.email);
         expect(employee.getRole()).toBe("Employee");
     })
-  
 })
