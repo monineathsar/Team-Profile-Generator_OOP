@@ -8,6 +8,12 @@ describe("Employee", () => {
         expect(employee.id).toEqual(expect.any(String));
         expect(employee.email).toEqual(expect.any(String));
     })
+    test("checks employee id is a number with correct length", () => {
+        const employee = new Employee("Emily Johnson", "0123", "emilyjohnson@gmail.com");
+
+        expect(employee.id).toHaveLength(4);
+        expect(Number.isInteger(Number(employee.id))).toEqual(true);
+    })
     test("checks employee class methods", () => {
         const employee = new Employee("Emily Johnson", "0123", "emilyjohnson@gmail.com");
 
@@ -16,4 +22,5 @@ describe("Employee", () => {
         expect(employee.getEmail()).toBe(employee.email);
         expect(employee.getRole()).toBe("Employee");
     })
+  
 })

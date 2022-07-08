@@ -21,6 +21,7 @@ describe("Manager", () => {
     })
     test("checks to ensure offce number is a 10-digit phone number", () => {
         const employee = new Manager("Katie Anderson", "0064", "katieanderson@gmail.com", "555-555-5555");
+        
         expect(employee.officeNumber.split("-").join("")).toHaveLength(10);
     })
     test("checks if office number are numbers and not a string", () => {
