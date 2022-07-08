@@ -10,15 +10,6 @@ describe("Manager", () => {
         expect(employee.officeNumber).toEqual(expect.any(String));
         
     })
-    test("checks manager class methods", () => {
-        const employee = new Manager("Katie Anderson", "0064", "katieanderson@gmail.com", "555-555-5555");
-
-        expect(employee.getName()).toBe(employee.name);
-        expect(employee.getId()).toBe(employee.id);
-        expect(employee.getEmail()).toBe(employee.email);
-        expect(employee.getOfficeNumber()).toBe(employee.officeNumber);
-        expect(employee.getRole()).toBe("Manager");
-    })
     test("checks to ensure offce number is a 10-digit phone number", () => {
         const employee = new Manager("Katie Anderson", "0064", "katieanderson@gmail.com", "555-555-5555");
         
@@ -29,5 +20,13 @@ describe("Manager", () => {
 
         expect(Number.isInteger(Number(employee.officeNumber.split("-").join("")))).toEqual(true);
     })
-       
+    test("checks manager class methods", () => {
+        const employee = new Manager("Katie Anderson", "0064", "katieanderson@gmail.com", "555-555-5555");
+
+        expect(employee.getName()).toBe(employee.name);
+        expect(employee.getId()).toBe(employee.id);
+        expect(employee.getEmail()).toBe(employee.email);
+        expect(employee.getOfficeNumber()).toBe(employee.officeNumber);
+        expect(employee.getRole()).toBe("Manager");
+    })
 })
