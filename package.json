@@ -25,7 +25,6 @@
     "iconv-lite": "^0.4.24",
     "inherits": "^2.0.4",
     "inquirer": "^6.3.1",
-    "jest": "^28.1.2",
     "media-typer": "^0.3.0",
     "mime-db": "^1.52.0",
     "mime-types": "^2.1.35",
@@ -46,7 +45,7 @@
     "utils-extend": "^1.0.8"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./node_modules/.bin/jest"
   },
   "repository": {
     "type": "git",
@@ -57,5 +56,9 @@
   "bugs": {
     "url": "https://github.com/monineathsar/Team-Profile-Generator_OOP/issues"
   },
-  "homepage": "https://github.com/monineathsar/Team-Profile-Generator_OOP#readme"
+  "homepage": "https://github.com/monineathsar/Team-Profile-Generator_OOP#readme",
+  "devDependencies": {
+    "jest": "^28.1.2",
+    "jest-cli": "^28.1.2"
+  }
 }

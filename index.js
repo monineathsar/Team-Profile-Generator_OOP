@@ -1,7 +1,7 @@
 
 const { Manager, managerQuestionsArr } = require("./lib/ManagerClass.js");
 const { Engineer, engineerQuestionsArr } = require("./lib/EngineerClass.js");
-const { Intern, internQuestionsArr } = require("./lib/InterClass.js");
+const { Intern, internQuestionsArr } = require("./lib/InternClass.js");
 
 const inquirer = require("inquirer");
 const writeFile = require("./src/writeFileInquirer");
