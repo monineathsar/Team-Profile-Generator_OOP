@@ -1,5 +1,6 @@
+// creates the team profile div inside starter HTML code in buildTeam function below
 const teamProfileDiv = buildTeam => {
-
+    // builds the manager team card
     const managerHtmlSection = managerInput => {
         return `
     <section class="profileCard">
@@ -18,6 +19,7 @@ const teamProfileDiv = buildTeam => {
     </section>`;
     };
 
+    // builds the engineer team card
     const engineerHtmlSection = engineerInput => {
         return `
     <section class="profileCard">
@@ -38,6 +40,7 @@ const teamProfileDiv = buildTeam => {
     </section>`;
     };
 
+    // builds the intern team card
     const internHtmlSection = internInput => {
         return `
     <section class="profileCard">
@@ -56,16 +59,20 @@ const teamProfileDiv = buildTeam => {
         </section>`;
     };
 
+    // puts all the team cards into this empty array object
     const writeHtml = [];
 
+    // takes the manager team card HTML code and puts it into empty writeHtml array
     writeHtml.push(buildTeam
         .filter(employee => employee.getRole() === "Manager")
         .map(managerInput => managerHtmlSection(managerInput))
     );
+    // takes the engineer team card HTML code and puts it into empty writeHtml array
     writeHtml.push(buildTeam
         .filter(employee => employee.getRole() === "Engineer")
         .map(engineerInput => engineerHtmlSection(engineerInput))
     );
+    // takes the intern team card HTML code and puts it into empty writeHtml array
     writeHtml.push(buildTeam
         .filter(employee => employee.getRole() === "Intern")
         .map(internInput => internHtmlSection(internInput))
@@ -73,7 +80,9 @@ const teamProfileDiv = buildTeam => {
     return writeHtml.join("");
 }
 
+// export function into index.js file
 module.exports = buildTeam => {
+    // adds team profile cards div inside starter HTML code
     return `
     <!DOCTYPE html>
     <html lang="en">

@@ -1,5 +1,6 @@
 const fs = require('fs');
 
+// will generate the HTML file inside 'dist' folder with title 'index.html'
 const writeFile = (data) => {
 	fs.writeFile('./dist/index.html', data, (err) => {
 		if (err) {
